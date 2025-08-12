@@ -7,7 +7,7 @@ spring:
 
 order-service:
 #  url: http://127.0.0.1:8001/order-service/%s/orders
-  url: http://order-service/order-service/%s/orders
+  url: http://msa-order-service/order-service/%s/orders
   exception:
     order-is-empty: User's orders is empty.
 
