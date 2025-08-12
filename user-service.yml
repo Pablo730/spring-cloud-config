@@ -3,10 +3,17 @@ spring:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;
     username: sa
-    password: '{cipher}04cba31990a5e03bb7b305d577ef529a4d45f2b43fc20a85e397bb391ec02b17'
+    password: '{cipher}AYB++TH70fk4h5Hxh9mjQ2k2/WOMTEMhrlG50gNpIwGlLeX0ZUwJU3xiiiS1pIekKVUqCNI40FBG3qs5E24yQ+uIqLsWn8qw/O3H1ZoakVk+drthYnS6sfnpc1UlnYQdhDpJqXMYpidJDtIsh3SPpZfsktgM5eRkxa1ga/mYVvenimCtZoOpRAUwpaNlmSWvToUOV41bqYSrPmG4I30cx+6kw9yYy23C4dv6PsoEOm+O0P5jyU3yeH4RSGNGL3888LE8ig4FPTLIX/N/CrFMyFu74T2EioxyhMVe+y1ugLfAX8evHT1vCl5GPPuqHSRFvBw0pplpMrrRumuYg5PzvNTZ1IIlPVcfjprQ1cmqqa1JFXZ0umXnt1hQsSmj7Koi5ikvEiHXBGVCjA3uDmL4KaCsiiLOBM+YLec93xbb1H32uuS2ysUUFtEK6XUj5UvReCSQUTHfoAgDWUShaGmQ3Di+/5lxZU5BpoHGwP86YIfiMduuMNoplBfpDlVoSBu6XQbxNabuxdyaJfhebFei56IKoAEST9U0J3IoSqoHPcQL0g=='
 
 order-service:
   url: http://127.0.0.1:8001/order-service/%s/orders
 #  url: http://order-service/order-service/%s/orders
   exception:
     order-is-empty: User's orders is empty.
+
+token:
+  expiration_time: 864000000
+  secret: newest-my-very-long-secret-key-1234567890123456-from-remote-repo-ecommerce
+
+gateway:
+  ip: localhost_9
