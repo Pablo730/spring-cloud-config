@@ -1,9 +1,8 @@
 spring:
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;
-    username: sa
-    password: '{cipher}AYB++TH70fk4h5Hxh9mjQ2k2/WOMTEMhrlG50gNpIwGlLeX0ZUwJU3xiiiS1pIekKVUqCNI40FBG3qs5E24yQ+uIqLsWn8qw/O3H1ZoakVk+drthYnS6sfnpc1UlnYQdhDpJqXMYpidJDtIsh3SPpZfsktgM5eRkxa1ga/mYVvenimCtZoOpRAUwpaNlmSWvToUOV41bqYSrPmG4I30cx+6kw9yYy23C4dv6PsoEOm+O0P5jyU3yeH4RSGNGL3888LE8ig4FPTLIX/N/CrFMyFu74T2EioxyhMVe+y1ugLfAX8evHT1vCl5GPPuqHSRFvBw0pplpMrrRumuYg5PzvNTZ1IIlPVcfjprQ1cmqqa1JFXZ0umXnt1hQsSmj7Koi5ikvEiHXBGVCjA3uDmL4KaCsiiLOBM+YLec93xbb1H32uuS2ysUUFtEK6XUj5UvReCSQUTHfoAgDWUShaGmQ3Di+/5lxZU5BpoHGwP86YIfiMduuMNoplBfpDlVoSBu6XQbxNabuxdyaJfhebFei56IKoAEST9U0J3IoSqoHPcQL0g=='
+    url: jdbc:mysql://localhost:3306/msa-user-1
+    username: root
+    password: '{cipher}AYBsfVZoLEsgDxeUbG8YnrGENsPQ444Vdp2+ARwuWpOtX4n2sp655ViFxexLJJlGzdgBEbRTnv0XUdOcjMDgETB28fc7yHt1ukTSH13/UINEDe8UExIk++siTO2hd0tiCxeIKbAemmMSziITUQ4wl3PfFWcc1cBcoAZQ7z8C81RZqNr72EduIBV/f+4VDVvNLwr2qmK6nn8l4aRbG2G9hb+4mis9JsX2SBoJWWVHc/ICv1FGL16ZbhmeZbe1ZmpeA08e0mA2VvOCcYi+UfF9go8aW9k5tWLc9hJq8HrEQvb2TqhyzzvprW0e/j1sKqKBZyLlgdfHdMsUDeMBDtBpq9K/bPQzv6FzkLS+DPwrQ3el3u7jaJoR8pURcBdamwQr8KMh98cyoZIEJj6iNy1t/n1uwGcp924raki/xb3rV4leaG83GPc6636qJcmY4OqRHbiXx/+gSkDFFtX65AGkTIakbK1r1d0dF0lF6UgcELzwMCOqcdcNqehIi1JMYtZP/X5IESnU+1I6+jnlmtUO+1pgsGVymuo6mzqe3GF3IWLxtw=='
 
 order-service:
 #  url: http://127.0.0.1:8001/order-service/%s/orders
