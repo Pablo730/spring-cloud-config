@@ -1,0 +1,113 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: gateway
+  rabbitmq:
+    host: '{cipher}AYBUu0A5AJFUz2cSkq/mfefd4MEwU+gN4S5B9yp+kNuWjs56SAHCZ1ybaPSKCV4hgXR/cjobwX7LQLVvKfBokUs/8AJX4onWR8AB8gE+KdIOJeiZrp6jaWuQQIYkskxkIaGt5fYqoo45mnj/Ajdcecr0sx2v6weBfJNrFwTWiZ7IAaeT7MUiu1OxlqbG7p0xJ0kY6ht6Vs+xG9j0vHATZP6JdUwCpkoYGCEApvw0VLkQxvsEsedMFcJbpDoUCna1l/ksbfe16detpIWI9Jn3ZFQ09FzhnafKVXVXLgjt53ymYYiga6UiiCNiXKHxekFGL7SoR3wx1xEnXM4mX36b6eghSKlTdqb6+ZC4eGUapYtYDBX3IhhRFJ8PU77oJvGiAvJRmKbYeDz2Y97zCrSVy6sIRLVHRHaNiIn40nbd8JCotp/Ux3ed+fbeI+AZrti7UrmZEFEuuAxQiypfihyPqL7+D5jXSxgBtqTeS3SM04Dx3wXj36XN48EVpllPRbg7NIVEMkQqbFz9bfB1krCLs3ej31B7TZ7k6x668Opn64HCdA=='
+    port: 5672
+    username: admin
+    password: '{cipher}AYCgyXiSlPFGIMMURQY91W1ULQPAL0USAysFQtach4bnPzQL86MrTElKdaIOx1gqjPowBgUNLfGbOPJNxuXeDsmMrjqby4VLJRwCQLSse3ZT0sTzVIXNMxu8aTf7rQWHp2FBzek5dKdesf5sYl7FFyDG08sef5DHYfHsi5JljQaj3XpN8sQMRwBMb7ixWhK1umKZeS4ymqzyqWkK8Dp3EgBWEZwHm4PfEDu5CzlE1zp+QqoRAp3KYTv8T9z3Iy9dce3HFrsVgqs6tG6+gZODooWwVm6U6wkDMijUgagsLPVXqr8tvztGCp5kVQhCO5DwVlSDSu4PV+lYV17Yj+rbkMNWNt8DglvYm/2q9H2BWdhLx++XKm/NWCe1gBG8ku0sYpMrk9xAxAw7cZfMeZy9XllPtJIPJUHCnd5OBir4SShI+Kp1fTKMUX3NncDRSLemi8Y/W4IXRu3YSab14aYX/H1wJ+RsbfXIwijPAFwGFsn1xV9aj4y4Zk6/ssqpE2KPIOUyKby3Ilj8jrFX1q/Rd9CNM5fmViMdOqXNMNeLsb0Jhw=='
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: user-service-register
+              uri: lb://MSA-USER-SERVICE
+              predicates:
+                - Path=/user-service/users
+                - Method=POST
+              filters:
+                - RemoveRequestHeader=Cookie
+                - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+
+            - id: user-service-login
+              uri: lb://MSA-USER-SERVICE
+              predicates:
+                - Path=/user-service/login
+                - Method=POST
+              filters:
+                - RemoveRequestHeader=Cookie
+                - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+
+            - id: user-service-actuator
+              uri: lb://MSA-USER-SERVICE
+              predicates:
+                - Path=/user-service/actuator/**
+                - Method=GET,POST
+              filters:
+                - RemoveRequestHeader=Cookie
+                - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+
+            - id: user-service
+              uri: lb://MSA-USER-SERVICE
+              predicates:
+                - Path=/user-service/**
+                - Method=GET
+              filters:
+                - RemoveRequestHeader=Cookie
+                - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+                - AuthorizationHeaderFilter
+
+            - id: catalog-service-actuator
+              uri: lb://MSA-CATALOG-SERVICE
+              predicates:
+                - Path=/catalog-service/actuator/**
+                - Method=GET,POST
+              filters:
+                - RemoveRequestHeader=Cookie
+                - RewritePath=/catalog-service/(?<segment>.*), /$\{segment}
+
+            - id: catalog-service
+              uri: lb://MSA-CATALOG-SERVICE
+              predicates:
+                - Path=/catalog-service/**
+
+            - id: order-service-actuator
+              uri: lb://MSA-ORDER-SERVICE
+              predicates:
+                - Path=/order-service/actuator/**
+                - Method=GET,POST
+              filters:
+                - RemoveRequestHeader=Cookie
+                - RewritePath=/order-service/(?<segment>.*), /$\{segment}
+
+            - id: order-service
+              uri: lb://MSA-ORDER-SERVICE
+              predicates:
+                - Path=/order-service/**
+
+          default-filters:
+            - name: GlobalFilter
+              args:
+                baseMessage: Spring Cloud Gateway Webflux Global Filter
+                preLogger: true
+                postLogger: true
+
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+
+token:
+  secret: '{cipher}AYB90uVbFgvEDd+Z0rHFYL2LjkiMtP1ZH4Ma3inlWtBTDiylFtVy1ZCs3QMJ4vn2L9S/0njPcR54El02Q7odNyUZUZqAaBbqtqbIhNPXh3GuFuf8SsyJQ8MXXrRFvNJoZ8TxnjG9XoMM0F6kcl1fyjSA0kcyfVSFTSNco7MpVxXz7U8MtOGSB96Buhna4YY/KimifserPy4nGrXbUTWyKXoIuQ78a6qrt23Q9hCiEjUdDGoeMPsZNvbg4I5ex89L4W6tPMcPxRU31iJDUTanxipbtIefEb1tQ8buSzSTYpa7rnanzkhpVrNeT12tFSD8ar30H5/huUwUnK65ljDMLLuCdVXzRZZ7Vh9MdGvRm0yyOtOv2XJDFF0j2XGUGCnD6Y0AekyvLBVS2rD7idHpI2U0uTjdgT9U8t3sqwkwOtm+TIR5Wfkc0/qJeXMXLiySSrFMbbfcIjhxADbVQ7GA3Nz3/91N/igqL3AToMC+2rpBjX4jHkqh99+Vc7jJ2q28Acb1gpp/RSsP/I2XL383AYvjW/wxkD04D9UQ4BnboOI1gs32HWgLtaQERZqKOr+X1uWHQ+b+2VMoYUbN/zdHOWJA'
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, info, httpexchanges, busrefresh, metrics, prometheus
+  tracing:
+    sampling:
+      probability: 1.0
+    propagation:
+      consume: B3
+      produce: B3
+  zipkin:
+    tracing:
+      endpoint: '{cipher}AYBNDY9APXwxEyDIeiemMhB9R04laSP/CjyMqxTcuhlJP83StbumO08oJWyHu4y0YUjFDSKcqDm2aAuXTzhhZQIKUfnhvxnWhhCXHE05SdacS1QAkrqknbQzx3MCIhvl8M+Ko/Wcls9GAuRh1OkjCgxXcCo0EG9EIwBZ/UjNEaU+7aE6ZSOgIcF4vwHPBniHpfuSVR49y5TIAfHFennbxHmm9AEeUYZdUZfauh9sd7kSMmAjXvC8PJsKePHPA+pBjbTlB3brhr1fOJipcq+HdYXG+jktOsNn4dalxtFYP1HKb01f8i75VHaUkwQgpEO0L8zSQaFwH61qbqXKx74ryEoVo1xIosk/t3HHCGv2j5Y7LLjF/ewgJOgL21lahLRTBqJcOUaIfC6jzX/o/8FAoqX0xq5xQRm36Vv/c1uNanCpCdm3huJY7wgW4+9Z8v4NWwtGaQUgr7WfJ0bO4nL1AYwy6lVwN6q5qMMvOjUTlbFQ0uSnd2iN/VrlEjfVIB71if79w0apSRsAii3pv/sadf24jOprJ1QDGgG6P7uqW76MnFPltkikFnLmY/0PTQVOQu4='
