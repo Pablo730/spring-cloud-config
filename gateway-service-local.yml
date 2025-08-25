@@ -1,0 +1,113 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: gateway
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: user-service-register
+              uri: lb://MSA-USER-SERVICE
+              predicates:
+                - Path=/user-service/users
+                - Method=POST
+              filters:
+                - RemoveRequestHeader=Cookie
+                - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+
+            - id: user-service-login
+              uri: lb://MSA-USER-SERVICE
+              predicates:
+                - Path=/user-service/login
+                - Method=POST
+              filters:
+                - RemoveRequestHeader=Cookie
+                - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+
+            - id: user-service-actuator
+              uri: lb://MSA-USER-SERVICE
+              predicates:
+                - Path=/user-service/actuator/**
+                - Method=GET,POST
+              filters:
+                - RemoveRequestHeader=Cookie
+                - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+
+            - id: user-service
+              uri: lb://MSA-USER-SERVICE
+              predicates:
+                - Path=/user-service/**
+                - Method=GET
+              filters:
+                - RemoveRequestHeader=Cookie
+                - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+                - AuthorizationHeaderFilter
+
+            - id: catalog-service-actuator
+              uri: lb://MSA-CATALOG-SERVICE
+              predicates:
+                - Path=/catalog-service/actuator/**
+                - Method=GET,POST
+              filters:
+                - RemoveRequestHeader=Cookie
+                - RewritePath=/catalog-service/(?<segment>.*), /$\{segment}
+
+            - id: catalog-service
+              uri: lb://MSA-CATALOG-SERVICE
+              predicates:
+                - Path=/catalog-service/**
+
+            - id: order-service-actuator
+              uri: lb://MSA-ORDER-SERVICE
+              predicates:
+                - Path=/order-service/actuator/**
+                - Method=GET,POST
+              filters:
+                - RemoveRequestHeader=Cookie
+                - RewritePath=/order-service/(?<segment>.*), /$\{segment}
+
+            - id: order-service
+              uri: lb://MSA-ORDER-SERVICE
+              predicates:
+                - Path=/order-service/**
+
+          default-filters:
+            - name: GlobalFilter
+              args:
+                baseMessage: Spring Cloud Gateway Webflux Global Filter
+                preLogger: true
+                postLogger: true
+
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+
+token:
+  secret: my-very-long-secret-key-1234567890123456
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, info, httpexchanges, busrefresh, metrics, prometheus
+  tracing:
+    sampling:
+      probability: 1.0
+    propagation:
+      consume: B3
+      produce: B3
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
