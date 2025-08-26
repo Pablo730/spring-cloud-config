@@ -85,6 +85,7 @@ spring:
                 baseMessage: Spring Cloud Gateway Webflux Global Filter
                 preLogger: true
                 postLogger: true
+            - AddRequestHeader=X-MSA-REQUEST, ${gateway.secret}
 
 eureka:
   instance:
