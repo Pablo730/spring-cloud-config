@@ -19,6 +19,12 @@ spring:
     show-sql: true
     generate-ddl: true
     open-in-view: false
+  kafka:
+    consumer:
+      bootstrap-servers: '{cipher}AYBSaRMGes+IhdHtw+3Qsn5h4C5VgKGxE9jUCeh7Xcba1ocuHM1Vpbt26GOUAgOJMj8xqmnFA9lZd2K+RtZRK74bf2RKiCHLDju9aVi4NiudXeIhdr8D48suaY3rADvGUDfY+L9S6pNv7qk3dbSCpzUufmH+SIrsIUawQgZRULESfbXucugalOxeI84dWtxQ9aG/aIrGvdQDHOA2w4v7Eq6wAa+UM9u0GzdStdgsT4IAFJcXMD3AkMQcu19ZSnHU5p6GFrpep1Op1qDT0y8llxFpvOlwWTLj2roeZXh98Mh30RB/P3tY03OIw+2rp2a36vdU6Xzm1cwsuEhAyfzK69V0MMghm3m9guNHQUD07oyLo0NyF6hQuYShnA75++vstmr5AG3gwEIufQe6vivKVLMSu5Ik01cIoBlw+Ccqw+VD6C8ZvaBHdsV5BumceNGeSG3HCMTOLvL2aG6YmhKyEg8cTcEyiBYcJfO35AkwjCiXTInehBlhiDD5qei01KBjlSUsQOVHA3W/+jIedWulsTC4bNtUTzoh5eX3uHRGisbvQg=='
+      group-id: '{cipher}AYBm8AsxVt5fGfK5nn3eRpi2XWHVai8KrjMA+C8viussH7pjap2NWRlH0grh+TSgVrld/w6t2asLvg0n0OrhLuabjywqMqohEjZ87lXLSGHK+kXW1ixv3QRzGDVfQK4T6YXl+k8up4mlWGz+7ojaDvFleNMmeABXuJmVpoRieIeMYXgik0XYo0oF5eulz6u5mEmhY2+V7wqEims/cxjWXhI0KHP/k8eEM/jW0Juqhy2VHvS9wGoDB47ZrapOyp5R4kpl867q3w5uZMW6SILN2SBVjsjKde7oQbjoRCgGP/H3KSEPmldknFWggrnAuO1TSXuTauROw/lg1hFaGyNRQ8hIfGXWbKWVUJZ9wedgn5mAlKZif9iiK4Lwmha/6bfeKqb64fTkrLtkYIilQrsXiGBfz6fSoOOjrF1eb35w022aL55AD7/g0gaJZ31vSsBzWNLry4Vxkv0d/ZH8cK1lfPQi7aE8/msX42oum1pth4BPnXAz0ADZUc3cFfnnnQe4KSTvC9QQaon9Dvo0PVgkpWSm2xDtAPIVBZ1uoOuA6k0e8Q=='
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 
 eureka:
   instance:
