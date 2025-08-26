@@ -1,0 +1,49 @@
+server:
+  port: ${SERVER_PORT:8085} # :8085은 기본값으로, 변수가 없을 경우 사용됩니다.
+
+spring:
+  application:
+    name: msa-order-service
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin
+  datasource:
+    url: jdbc:mysql://localhost:3306/msa-order-1
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    generate-ddl: true
+    open-in-view: false
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, info, busrefresh, metrics, prometheus
+  tracing:
+    sampling:
+      probability: 1.0
+    propagation:
+      consume: B3
+      produce: B3
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
