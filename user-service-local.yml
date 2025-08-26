@@ -1,0 +1,55 @@
+server:
+  port: ${SERVER_PORT:8090} # :8090은 기본값으로, 변수가 없을 경우 사용됩니다.
+
+spring:
+  application:
+    name: msa-user-service
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin
+  datasource:
+    url: jdbc:mysql://localhost:3306/msa-user-1
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    generate-ddl: true
+    open-in-view: false
+  security:
+    user:
+      name: test
+      password: $2a$10$MfHrLw/sjpTqrW2Hveg9uu0WyDP3.Z4uuj9lnJdn5UJ1CLs5pnski
+
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+
+greeting:
+  message: Welcome to the Simple E-commerce - 2nd.
+
+token:
+  secret: my-very-long-secret-key-1234567890123456
+  expiration-time: 86400000 # 10 days
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, info, busrefresh, metrics, prometheus
+  tracing:
+    sampling:
+      probability: 1.0
+    propagation:
+      consume: B3
+      produce: B3
+  zipkin:
+    tracing:
+      endpoint: "http://localhost:9411/api/v2/spans"

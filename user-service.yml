@@ -1,18 +1,55 @@
-spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/msa-user-1
-    username: root
-    password: '{cipher}AYBsfVZoLEsgDxeUbG8YnrGENsPQ444Vdp2+ARwuWpOtX4n2sp655ViFxexLJJlGzdgBEbRTnv0XUdOcjMDgETB28fc7yHt1ukTSH13/UINEDe8UExIk++siTO2hd0tiCxeIKbAemmMSziITUQ4wl3PfFWcc1cBcoAZQ7z8C81RZqNr72EduIBV/f+4VDVvNLwr2qmK6nn8l4aRbG2G9hb+4mis9JsX2SBoJWWVHc/ICv1FGL16ZbhmeZbe1ZmpeA08e0mA2VvOCcYi+UfF9go8aW9k5tWLc9hJq8HrEQvb2TqhyzzvprW0e/j1sKqKBZyLlgdfHdMsUDeMBDtBpq9K/bPQzv6FzkLS+DPwrQ3el3u7jaJoR8pURcBdamwQr8KMh98cyoZIEJj6iNy1t/n1uwGcp924raki/xb3rV4leaG83GPc6636qJcmY4OqRHbiXx/+gSkDFFtX65AGkTIakbK1r1d0dF0lF6UgcELzwMCOqcdcNqehIi1JMYtZP/X5IESnU+1I6+jnlmtUO+1pgsGVymuo6mzqe3GF3IWLxtw=='
+server:
+  port: ${SERVER_PORT:8090} # :8090은 기본값으로, 변수가 없을 경우 사용됩니다.
 
-order-service:
-#  url: http://127.0.0.1:8001/order-service/%s/orders
-  url: http://msa-order-service/order-service/%s/orders
-  exception:
-    order-is-empty: User's orders is empty.
+spring:
+  application:
+    name: msa-user-service
+  rabbitmq:
+    host: '{cipher}AYAWSRd/gc0ynLyjFyLt0Ln5NV+G6LIqUwIkkxY5PTdvLBjt+XbOeHZYiLOGhWS6yXlljPrq5KrRSIiAoy7O2OWt95UoU5Vy5C+GrPKvhHOcm0jmlrrGEg2pdjCk4Wil3Mb8mNkx8hDMgi8OCRqYD6buol/E9m74Gf1VWBSfRAo/by+/fwiJIaJLUTKs9RonZ3XRUcI2Vze5L/5xcJrSVUA7OEVCEGV9jLcfpQ9CQ+1BGdBOwfkyEAefH0Ndir3rjn0H3EOAIZvSXtjKnvqjPorCoprDVTScD6qYYNO+kYS5fHl2oFt5V7DGjp+9uYvPQ2faATMglrBnd/0BO10qsuJ+gxq/2iIjsE7st9ZRIykL+JFjA2WEQscyElIeGpHwTXqIf4HbbJ05XnZPiaMPqZlq0lXexDrTEySTaxljKjDJdDoh/k4BRr5dhPTCLAUcpUhXhGmmH4zusZtnyFBwOX/SyKSUwtzA9pcFpldP8PC4eZeoNhK8KDoXulDcHpUMdeMadUS/n5gVFZ5sdkrKqluwka6600/b4gaxjhqiIl0DDg=='
+    port: 5672
+    username: '{cipher}AYCgxHI3iU40N03Oc9ELc0poOcFpdirzo6DYv3FHaXW/W1lg5kOqU8keiB4dmjd3zH0RzuQ2JYraFkBHQWEUZBpqK4YVXNu1XK53delzM12XvxOHjhbu2zP1sHf4f51sJOyYz6/zIWBynexf5Cvdr2iY51nMAZjBKbRldT8LEBp21NsKkXdasBu790AkDm4RChwHL5mC7GJu8NtJDiAUvSXLYPqIRQ2raBT1UiEGhIsvNK5if+PPWeIgqQdXHblVXFmbwMLnD/urRE92rxpcjPxhfHeGOdvF1WalmNY+Lfl8vwaY7BqVK84kmPQp622r/F8FbTN1RxFFZ9VJjoA/VNYUyYROxBpetWzAkxclo7OO5oEwRrEPWa6KTz55j7K3s0f9DuznlCfbCl5bk+tE0dPq0FRgPBPR3ALesVnGbLsIlxzR2NzDKv3Mo2R72hedI3LxSwXz0+itOmYgiunnAuS/XTjHsUr5E+Xw0A/vLCfGja9CM+srO97iwj5w5i0sA0D4tIodFCca96KVRkJ39CX5mguiCRIxgIvhtFAXCNKQWg=='
+    password: '{cipher}AYCgxHI3iU40N03Oc9ELc0poOcFpdirzo6DYv3FHaXW/W1lg5kOqU8keiB4dmjd3zH0RzuQ2JYraFkBHQWEUZBpqK4YVXNu1XK53delzM12XvxOHjhbu2zP1sHf4f51sJOyYz6/zIWBynexf5Cvdr2iY51nMAZjBKbRldT8LEBp21NsKkXdasBu790AkDm4RChwHL5mC7GJu8NtJDiAUvSXLYPqIRQ2raBT1UiEGhIsvNK5if+PPWeIgqQdXHblVXFmbwMLnD/urRE92rxpcjPxhfHeGOdvF1WalmNY+Lfl8vwaY7BqVK84kmPQp622r/F8FbTN1RxFFZ9VJjoA/VNYUyYROxBpetWzAkxclo7OO5oEwRrEPWa6KTz55j7K3s0f9DuznlCfbCl5bk+tE0dPq0FRgPBPR3ALesVnGbLsIlxzR2NzDKv3Mo2R72hedI3LxSwXz0+itOmYgiunnAuS/XTjHsUr5E+Xw0A/vLCfGja9CM+srO97iwj5w5i0sA0D4tIodFCca96KVRkJ39CX5mguiCRIxgIvhtFAXCNKQWg=='
+  datasource:
+    url: '{cipher}AYCE58sS019+6K8kdlq/8T5XQh3qjiD6JvWG11qdXvlse/AnzV0EzqdtYYsfblEDTUQ0AM++LHpXWg9NqzTt/hZgjSP4Bg1oGE7E+eWRCpuNeqYh36RLKQI+qOdMDOXAdQLLnxRBIXwZetxlkHjScIH17z5EF9qJbC85+cpGCXiud8Ex4w7XsnBOHdJ1UA9Yhe07d3KDW44a7YbnJA6iPloQPguEokbWt2yW5AEPITcLrJIkH6yKmdgfzIqsS2bp1mdoAVTS8zjrFyye/Lg9ZNJYOE46CdtXjA0ewleuW0Mf5YjZQReaC/sBOwhhGQXNsWi1u9XZJNvLxywVQ/1rlwGEdTxwnXR7+/vV5Ulm/hzL8vnSi1Ws6rNiz7+raDZLeAQXdNTVKDR4DS7MVK+TeJJcYdZ4h/sJAirwnVvtG/xFfo/d+fRbkIcG8Qn25KG/y00JoaJiFR1addJl8awzSppPzaLZhWBT3UpHhbpRSu3nPoLqCLgi8CbJfcuUENKCb3954bNGdIQ1nDlQoBchyAc4gqQAeLXzcs2+m+WdLe0MWYWfPnQV1OFKGaYeBCB79DIo8UvYbBNH2rCwGFj7Cky/'
+    username: '{cipher}AYBrytI9FZevIaehD8Z4Hc2QX4nC4ovmVvwM1Z6BndYs01JzKN4ecjTkK0PsCjUaWYaXKUgX6n3oNmn1Dc5sLZMSJqlvl/MHlkKHySoO127+cuPozap61Jz4tC4AXDbzqlkauWDaB92gYU08c5FvFzXkVd7FzHuUs8sli2McbZWYMTmKoTC22w/UndsFJmYNvoXpWSVWj70NurEEXUL6MsaB6XUpeqOu6MVShFh3clOUwnEKd028PE/o0PJ06/0yfhV94PDIM4Jxr62m0Csi3Hd7GuBRKgtmgC3nU3XoMG8g5Ni3+zLJhjSFZWidMWisiFgWPSytOVaniJrMZVJnHoELFQSu1AjhWGrujney5RriodSccfgAbiN+EsyEpAFhJBfNbmy/oSVfhzZGlk7ytyuEpMnX0qRmyt2KhytKhkEoyGGijQYsFR3j0PzJQ4f7DpSlIwlBXmffXT+fjw6YrFT94gWOvx2O2Q+mD1EaBry+S8D5gvbYVNnhRjDcQLGqWXTu/daMH2PMOYxslqUc6XyBgBgMgzuzaHqSBV2ahk/vog=='
+    password: '{cipher}AYBrytI9FZevIaehD8Z4Hc2QX4nC4ovmVvwM1Z6BndYs01JzKN4ecjTkK0PsCjUaWYaXKUgX6n3oNmn1Dc5sLZMSJqlvl/MHlkKHySoO127+cuPozap61Jz4tC4AXDbzqlkauWDaB92gYU08c5FvFzXkVd7FzHuUs8sli2McbZWYMTmKoTC22w/UndsFJmYNvoXpWSVWj70NurEEXUL6MsaB6XUpeqOu6MVShFh3clOUwnEKd028PE/o0PJ06/0yfhV94PDIM4Jxr62m0Csi3Hd7GuBRKgtmgC3nU3XoMG8g5Ni3+zLJhjSFZWidMWisiFgWPSytOVaniJrMZVJnHoELFQSu1AjhWGrujney5RriodSccfgAbiN+EsyEpAFhJBfNbmy/oSVfhzZGlk7ytyuEpMnX0qRmyt2KhytKhkEoyGGijQYsFR3j0PzJQ4f7DpSlIwlBXmffXT+fjw6YrFT94gWOvx2O2Q+mD1EaBry+S8D5gvbYVNnhRjDcQLGqWXTu/daMH2PMOYxslqUc6XyBgBgMgzuzaHqSBV2ahk/vog=='
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    generate-ddl: true
+    open-in-view: false
+  security:
+    user:
+      name: '{cipher}AYB8SrDogEk+/pqIj5Tfz9nI1xoBJaBwNhye4ciCR32Gs2glQ0rCQzinPN4zQw+xtZ5CiRIg1ianyishzcK4XXBM3gJEqBL2Xd8iAFoGL6u8Ey5FZN2W5Jff2PVksAtV3FKwd2oOUGI+3u/KWd1Ej7KpybefL1W6Pzc2ylK0ENIYaTxf4EX4pY4PPXrHnK1IFa9DRLWiUHtM/v0AnHvBqWQ4mYWlNAcuKjiAQwXMJXSaS2W64TWgLmTfJiJszYQKe0YaVcCOJ38SSa4uRV2pUCSkZ0UerkGHwyjVrK9CLTi0ZDgrDeVGUDtLFwCgMTok7uuuaVsAnIV8FAxeBIl1R16z6pXKC2HuXTJsUQ5MR8BjyGhI0fMQNun15hSJTU/YtwYV17w1kK8alCPiivOo+qiza7y+A7Hr56GpXH+8gWpw9gZdHHLWuaknQLwLNJDmDbIGeX9AwH7g0K+GLjb38So0dBlMUwTtdiH6FpAhFUTaWIeh3sMGaRnGMGMHPTDu0qFu8CtQH4BsCZm8PRDS9yUJaP8XV7jlehcEXfJjYiyNUA=='
+      password: '{cipher}AYBeia/gqL+YUIUQAXtwbJatsPz+BELTPDlO2M28P6phq8RYbgmsaq7OuZRfWu0xEIn7M7GKtFQDSu9FA86GxaBLUeUB87O817hSu5w7AcPWQXw5NF2zcsTgG+9eG5Lwn2wnpQcqucnzTPWdEaIiYLkZ+x3DZHSH4CumoKkW42QX67uhmphi3gtjtcFKMhodtbP1l26lN0qqKs4/Buc/6LGZPE3WuvtOWi5nc/ZudyRP3Hdeh29ZaJCQdPiTbHgeiow6SHZMp2NJQJ+EKPaH18IfAjunbCX3ZeBqS9dChwlyPIu2iajcOccZWlJobsCAXtJXrEoqNq1DUtGfv2eM30R2BaHlU7ufCRr1kbj/7c9tny6UlQIV3ZIOIcHdTjE3vwRfW9keit0DMfY6ODeGlkjDYb2KGkumwY0S5q6AQ6SL7w5eh+XybMI3HHmnlkDLo5fvZ1QxhYiUs2fWByxtqWjCl5RI+yrOrO2xPorT0flveFFTL4/U5y2qWB+5TvMbvoQrVGMeMk/DM7hFPccI3ba3zjDCTUTuBt8Kuw3aNyz4rzQUMGsG/2/XvAdj6aEwqXI3bjJBqEhdDPUPXQOUD9yJV5rECl+6eXqr1jicdc27wA=='
+
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+
+greeting:
+  message: Welcome to the Simple E-commerce - 2nd.
 
 token:
-  expiration_time: 864000000
-  secret: newest-my-very-long-secret-key-1234567890123456-from-remote-repo-ecommerce
+  secret: '{cipher}AYCfR98Q0PQI1anejtC9ghsUIKBtC+soZ0WA3RcvxuOWOhAkmXMSANxGwjlfb5Op93n84nAWNCIYthLL5U0CYpR4NWTNTaATc9IvLnAc3QXSSwN8SPtjK+Kfo9qnkZunQV9fIIGGQKMr0r4uigjhN6qjIT4kpx/bH3e4lirB8BfB2U36WyrAdVRvb7CzcM5jtFIxrswLI0sX6b0jWObgZc5XbEbAeeBNNpvs0AyGiJNhEYZCRZ59EMNUtYMNTBTZ5iu73wxjPJg2arw7bbsoKaG0dR0ptJ+oX6qCuFQcwrGD9poZtCYGmaNArpk8ZZrVC6HajKPJxlldNaH98QO1r+Ckp1EnOBpXmEZCXeOMBhvS08+YPICjt3x1B8FM6taD10q8IrwdYcXTDpJEfAowa+Po94eqk9yG1JEZ9VsKAPdj7Iuzlk0XirM5/xg5ggsKugLFEUmMq8wBPk/PUyfWHtmSJRDrYTm52hCm+IaXkQKs/jAHd24hMP8T+UzBzjtlIJLq6LfBOd6QQSp3R/h2PUH7J3diHlfaKnRhkK3Te3U5pBTfMwQhqAgxOnlRPfBbPdYbz/mXxO6RBfhIzPIrx2S/'
+  expiration-time: 86400000 # 10 days
 
-gateway:
-  ip: localhost_9
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, info, busrefresh, metrics, prometheus
+  tracing:
+    sampling:
+      probability: 1.0
+    propagation:
+      consume: B3
+      produce: B3
+  zipkin:
+    tracing:
+      endpoint: '{cipher}AYCFBaRmogD9D2h9gJ3zOhxuzEy8D0UaTHNeuYTGI2S6QWgajTuRlM/Adio/R8YDqeSxxaErKtmx6txe1WnyQRgm08fp2OprnzRBm1ZsvHyETi3Bc1mur61kzFTi1J/D2ihcT9pkFZKHbey8TYduHyI05S1/inw0RY0E0q4XlzdjsAVv+MdJOynYpaWON5M1IkQwloA0xNsLUoFKLwzPxzIDx4M+4yv82C9DmhshKBgcnCwEr3xjx2ygXuYCt5jJ5yxK6MsyZAqGqYyggdklvHw0ViE08uumTYl4NAxdd1C2iNm4WHCnNQgZV5GeqZUgV77RaF8Fe2tRQBodZlInae6YuG5E5qoBkWjTW8/DyxvVDXsRZJotd54svwQ829ct6M+htnrdhqBPwCvzLxt3N84t/swlUKpLIgZX4VwlXrROFo/BgNmeWoDoS120Ilv/Kva7rBJYUbu8gNKM0yPQoueTOBcGH7XgUMSs6eeeGROllHhu4HXvIm+hK1i+o7fKkfHnvNstoG2N5/lKP72S6qwDun6B6PJhqMz1R4UEhF4UzgP7A02TSzYT9FhF75HpKDA='
