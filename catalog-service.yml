@@ -1,0 +1,44 @@
+server:
+  port: ${SERVER_PORT:8095} # :8095은 기본값으로, 변수가 없을 경우 사용됩니다.
+
+spring:
+  application:
+    name: msa-catalog-service
+  rabbitmq:
+    host: '{cipher}AYA5ayh5RfozNJEKf6Jw7Nk/x0UqgeZKKCaXGoVKE52zF/iWMNneXNIIMUaQ1sHbCB49ECmKKUGYQqViv9sOCWtqZBoFSOhuRVI1VNmMrK48m+0G50/j8FZ+VBYnrAmvqluae7e2vo2g68Wulq/ySoy+cpIzgzmGQsXA5rquG9o6qrBqR5Gleij5CQtV8WE29MoQCozRmGf0HBthJT6FTVVePzXggY5E6zSh9aNgnd0PkDLEQBhe1sWpTMISVqlJBNA7NacRRk0HY0h0NWad151lg3TEFHBpFoF66WDMt5X4L/qS3BGLj2f/ZnJWnIXE3b6kbvXTB3dMiMiibTbfTU4OWsNVM+5xkH7TkLCtlpYwCd6aMKDbcimtfpiHBmN0luLynSHMLt2Oxb1OEv2fIZNf4WW3VRHkoGXzah3VDE+x6pvM0eCFSws8Q8lXorughrQqd4tNzzLlH8HNqWIcVaV5ZfSrL5wsPE/F7/dUV+vqA0V9JG2sXq5UuqwjOCseOG6uEntogbwS4g/IVH2ZiVYXHU/JqrB83pJUDOGKSFSIXw=='
+    port: 5672
+    username: '{cipher}AYANT4RdUCsbxpKV3U8whMTCzQiidXMyOPKdcUkE6hMgY35FBJBovxZrriT6fjEiIhwtn4GJ/gTRWA91TZ2Jmye9/VSn3qlZ8OxdbWvONpLCEjU/geN1erW3v5zeT8XEf0hIOOz5Pc07X5GH8YV+FilOO4tPkYN278G5FAQZGLSLSSd+NSe9RLFjklCmuNQbQzIjjuXd1uik+XnUyG0hDgUQiBl4GrVDiBTk8g4v9LR7HU9kzAqnH2pO39JptA2d3p+9uXZI2fpGLUd1jOAOk3tgQiWOW8xp1LxJF5xoFVRctQunRBU2VfsISkfA8g6CdqwGVOE7wmXXMjo+OoMh45rXly9CniIgejuNRuMvuHUZ8QBEuaKwyuD1jkJYAWH07PjfBsApExgakEP9tNKzYWMktHmYQBq+eoRGKiujlAyne8aQyg7rd7MkUPlcOlj84CdrWh7y4gufXPPSElbaLzIoNA2uXpmWMRGF1CTKDmF6pWuKP/eEoD6EpjnUfAtS+Q7nh0nowSVaoPYV2V2NhRpUoIVcEdrdtrZ508pIsyNwbw=='
+    password: '{cipher}AYANT4RdUCsbxpKV3U8whMTCzQiidXMyOPKdcUkE6hMgY35FBJBovxZrriT6fjEiIhwtn4GJ/gTRWA91TZ2Jmye9/VSn3qlZ8OxdbWvONpLCEjU/geN1erW3v5zeT8XEf0hIOOz5Pc07X5GH8YV+FilOO4tPkYN278G5FAQZGLSLSSd+NSe9RLFjklCmuNQbQzIjjuXd1uik+XnUyG0hDgUQiBl4GrVDiBTk8g4v9LR7HU9kzAqnH2pO39JptA2d3p+9uXZI2fpGLUd1jOAOk3tgQiWOW8xp1LxJF5xoFVRctQunRBU2VfsISkfA8g6CdqwGVOE7wmXXMjo+OoMh45rXly9CniIgejuNRuMvuHUZ8QBEuaKwyuD1jkJYAWH07PjfBsApExgakEP9tNKzYWMktHmYQBq+eoRGKiujlAyne8aQyg7rd7MkUPlcOlj84CdrWh7y4gufXPPSElbaLzIoNA2uXpmWMRGF1CTKDmF6pWuKP/eEoD6EpjnUfAtS+Q7nh0nowSVaoPYV2V2NhRpUoIVcEdrdtrZ508pIsyNwbw=='
+  datasource:
+    url: '{cipher}AYArfv9xwTtaGayA2CAR5jNuIvMFB9GAIsThsEajW97BRVpVdAnuU6oIURTHWcX2QoHL1TVOlz3luIL/grDcsPTkcPg7yDyLBLYZI9hEPuSFnbMA5ABiID0IJibrDmk0TvI5FHQiLqQaZyp5yi6owLwBUVUjgJe/FNzdiJvoY+ixkzcM0gEvrCcmeLQAh1I3vp6jiJIs0GdOntj4ZQWm3pelm0WD7kKK0RyH6St6bDt8gRebj7Mb2HnZVKrA4QjFUVuIRjtF/QxVAJVumONY80E9XVCE4cvvh94XSr7R9uAardAqv1VrriXsJBO8/+4KAJl8HUFqz31pGFfxzil2jhMk5hfrVm/Xcg2kSr8q6eghdcM17Th/NIXtEm4l1apNwL9Yro3ka2CqZXYN3bc8WYlq5/mZuRevW62s7w9e62bd/Lqpj7zYYRYzuLB7a3Eejbj87QEdY8/HRLUSfPONNf+e/wPjp6XR5w1sxOdq0D1R6xTlwmZKsZJZ/Psh5NW2HDMsx9lCzOl7EGYeEtVtnaqI7NroV3xAsZd+B9eZ7UM+65xIW4SyTXeAgQhdcPqdPODAjn0Oo2ic8ss3PM3zXIq9'
+    username: '{cipher}AYB9X66CKAky+BV3IMTn3i6oPCw9S+FfoD9wY83G8enMoxgq/Ei/4kwiLvlYs9o14CGHDTabSNUrUTrKXTUr8kUIaTa2vKub8p7VT3UiEo4KOuKEgBdwD1oB0cLiwrllyNP81iegjELZX452U+k0okgtQjGjI3qmAKEE8THVSUJUqCwFqdn+FpnKV7DrUhHdb4XCpnzWDMB24cwqQdBM9KMw+neCBdz27Z+iCcQdJvbfNBUqsvvdzBVS/sstUFoHR7xSVCrZS9qVrYZiVxL6rtLpQrRRM2JEha6hPdRJfy3AcwfSNyOtU+P/oMTfT/cJTBicO4p60kFNYRZ6xEGjYzueHLvkJwDzECye0eXEwjCm3qBaTNDiEe3pQ8o3Q88bL3bNBuhI1KkPtZ8zwiYMsEKtuane1+62+KDm0KkSWb+9SOfOEmiOBV3zicfysQpSuPfkt7BeWLtTNzsaqw+oj/faC87NKcqJtLXlXgmlyqwxSn0YL9JUkyVRBDhsyqJOWStfuT75kiHcmaQ+uDTLv6FQRb6Ob1UUYHvdQIPicB6XfQ=='
+    password: '{cipher}AYB9X66CKAky+BV3IMTn3i6oPCw9S+FfoD9wY83G8enMoxgq/Ei/4kwiLvlYs9o14CGHDTabSNUrUTrKXTUr8kUIaTa2vKub8p7VT3UiEo4KOuKEgBdwD1oB0cLiwrllyNP81iegjELZX452U+k0okgtQjGjI3qmAKEE8THVSUJUqCwFqdn+FpnKV7DrUhHdb4XCpnzWDMB24cwqQdBM9KMw+neCBdz27Z+iCcQdJvbfNBUqsvvdzBVS/sstUFoHR7xSVCrZS9qVrYZiVxL6rtLpQrRRM2JEha6hPdRJfy3AcwfSNyOtU+P/oMTfT/cJTBicO4p60kFNYRZ6xEGjYzueHLvkJwDzECye0eXEwjCm3qBaTNDiEe3pQ8o3Q88bL3bNBuhI1KkPtZ8zwiYMsEKtuane1+62+KDm0KkSWb+9SOfOEmiOBV3zicfysQpSuPfkt7BeWLtTNzsaqw+oj/faC87NKcqJtLXlXgmlyqwxSn0YL9JUkyVRBDhsyqJOWStfuT75kiHcmaQ+uDTLv6FQRb6Ob1UUYHvdQIPicB6XfQ=='
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    generate-ddl: true
+    open-in-view: false
+
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, info, busrefresh, metrics, prometheus
+  tracing:
+    sampling:
+      probability: 1.0
+    propagation:
+      consume: B3
+      produce: B3
+  zipkin:
+    tracing:
+      endpoint: '{cipher}AYByt/ylUlnrGyWhiqeNJAwTSEX5jc3NlFfxM2akZ3TBOviTt8V29xQA8U8RT2oeZPCMC1r3xLhCBZgkRnMMD9gFkHJTX4v84muE5uz5rlO0A0wGIuUZxgSk2JAts9wr7SWzg8vC4drRv5cAQE8nIkghT+gcZcgIFuu3vYYZiqpLlJGMEPJll7JRGZGs4G2D2z7QHaI0i4M3+npw5lTxTbCX5mMmaw4Rd1dIDnEgU9H70evZ9gVS6vlETviLTB4tUe1KvI4VTUq0uqEqZb4RoRAx5MZYqvRzEYDJWdQgQJ8oJ1IIo3HcN0SWfIkyzkwvAflCz2gv1FJVfM5+gaifsyjgs+j5kA7wlefSITMNLSeuLVCjsMesATGL+2DNxtYjVnvArcZSKpC94A6dxPWVSlEyD3GkBp5EzHQL0NNynsTxoBR2A6H7e7hSld7ikvV4W82l/kpdSD9jCtnpvWLzGAQoxXMj7tzcMaZ5mqL2czZyEpHUMhGZQ1DCb5WJ+6RhE3iDiV9YMuTS9NmN5SQv0Jqu5Tn0ZB6yoYTKpN7Z6P+u41pyKWoT0EuHKiWwKJcBfEQ='
