@@ -21,8 +21,9 @@ spring:
     open-in-view: false
   kafka:
     producer:
-      bootstrap-servers: '{cipher}AYBsl5VPfv87Um83qJlgBhAyU0XezgSenMY0kRczWOFxyj41ie9VmcEaIgq5HSn9lD7OXvS/Au0ecoJ0LNaBh4IAsawk5bnHarfpnMhrCLUx+18352ybZ5kl0bj26BE88Vg4j9EK0jQQzjl17God4yyT1q/mr9zuBB4HCNNuxfe7TqU2U7knvhCUepq8w54PhV7nL6kdF2UAzGD3+07tZABMYf3U/0tElcoQvy8SNHHqjTwQ7FLfrrqCug8EYdcnV5pmk7/Pt6bSF7JJS2aRDnEDS9kt3b47vB3SNdiTDH8i9NitLNavEc4ijUomxpnZ0da2o7rOB4hgF22oC/WkyTWt6BjQFy05HF9qf2voVZdsVQEZzF+ABfoTHvH5zufGqMoHp5uDHMCod075WZoURmu6zSQCq7cyHU7at713j4CjAY7q6/IeOi+yVqtpDHttf8pf9l4nP0btAxWZtaKlUaVuQEDw4Ap88YTFMCkZDAbb4ALbc9tIG/wv9B7K7EB+L3b0IM4l7pSxzB2jvnASxqmf1TVPu/C2y7lAB32FgG4CUA=='
-
+      bootstrap-servers: '{cipher}AYB5kdD2BZGmU2aHCcn9kGK/uMcwtwprKU0VSLtVBsu5sLhhvcHemELLpecJ4OvWgqZ3k0RRA5RMlr8VXAWaJZKWCo0yA9srsz5MzjBY8gaJP3yxO00gOPHDjSY8Wo6arqjVgz8QjwUV+rwketByN/HjJijNfnxMu0odYtXDSUTU6aXlOpVTM6mJka6gpQv8bNNWqHTQhiVA25e5lPS9wV7voKBXhZyfCBjPqVwQ7pTS0o+mnL9/ixgYrVbXPhfVFFqytYIyHExk61GsrHEdxU67BNs6O0WDmIIWhO2ALms9q1YJ6giUbKxRR0SGMbVUkkUyVmYGqeMac6gMooZrKwLwfpZecjsjgz60NsagYtHFuMTX26R0s40XSYqt2KHNahJJ+L73LmM/giOPlB/oXGxdfNMLwzVS1nQOnHsRqubm75OUwJaPhLiOle3rgza4XStuFq69GH6DizjcVMyb3rdxBYeFQoPSdAitrOcCpE3zryfkUeJKO9une21AD12cW0FYLb9ImEZQ4rnrNE3x8ym0ROwShruZZ4cIcOVxwbSLCQ=='
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
 eureka:
   instance:
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
